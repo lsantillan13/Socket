@@ -1,0 +1,40 @@
+*, *::after, *::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section{
+    width: 100%;
+    height: 70vh;
+    background: #f9f9f9;
+    text-align: center;
+}
+table{
+    vertical-align: center;
+    justify-content: center;
+    position: relative;
+    left: 0;
+    top: 0;
+    margin: auto;
+    width: 100%;
+    background: #263238;
+    height: 100%;
+}
+
+th{
+    font-size: 3em;
+    color: #fff;
+    font-weight: 900;
+}
+td{
+    position: relative; 
+    font-size: 1.5em;
+    color: #fff;
+    text-align: center;
+    top: 15px;
+}
+
+.product_image{
+    width: 70px;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link  type="text/css" href="./style.css">
+</head>
+<body>
+    <section>
+    <!-- CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <!-- EV PREV -->
+    <script type="text/javascript">
+        function stopDefAction(evt) {
+          evt.preventDefault();
+        }
+        </script>
+<center>
+<form method="post" action="/api/productos/guardar">
+    <fieldset> 
+        <h1>Ingrese Productos</h1>
+    <div class="formGroup">
+        <label for="titleGuardar">Nombre</label>
+        <input type="text" id="titleGuardar" name="title" required>
+    </div>
+    <div class="formGroup">
+        <label for="price">Precio</label>
+        <input type="number" id="price" name="price" min="0" required>
+    </div>
+    <div class="formGroup">
+        <label for="thumbnail">Imagen URL</label>
+        <input type="url" id="thumbnail" name="thumbnail">
+    </div>
+    <input type="submit" value="Envíar" id="enviar">
+    </fieldset>
+</form>
+</center>
+<script>
+    let empty = 'No hay Productos';
+</script>
+</section>
+</body>
+</html>

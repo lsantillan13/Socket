@@ -1,0 +1,96 @@
+*, *::after, *::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section {
+    width: 100%;
+    height: max-content;
+    background: #fff;
+    text-align: center;
+}
+
+form{
+    background: #fafafa;
+    height: 100%;
+    width: calc(100% - 5%);
+    display: block;
+}
+h1{
+    font-size: 2em;
+}
+.formGroup{
+    margin-top: 20px;
+}
+fieldset{
+    height: 450px;
+}
+
+label{
+    width: max-content;
+    font-size: 1.2em;
+    position: relative;
+    display: flex;
+}
+#titleGuardar, #price, #thumbnail{
+    width: 20%;
+    height: 35px;
+    position: relative;
+}
+#enviar{
+    width: 10%;
+    margin-top:  45px;
+    height: 50px;
+    background: green;
+}
+
+.product-list{
+    width: 100%;
+    height: 600px;
+    background-color: red;
+}
+
+
+/* TABLE */
+
+*, *::after, *::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section{
+    width: 100%;
+    height: 100vh;
+    background: #f9f9f9;
+    text-align: center;
+}
+table{
+    vertical-align: center;
+    justify-content: center;
+    position: relative;
+    left: 0;
+    top: 0;
+    margin: auto;
+    width: 95%;
+    background: #263238;
+    height: 100%;
+}
+
+th{
+    font-size: 1.4em;
+    color: #fff;
+    font-weight: 900;
+}
+td{
+    position: relative; 
+    font-size: 1.5em;
+    color: #fff;
+    text-align: center;
+    top: 15px;
+}
+
+.product_image{
+    width: 70px;
+}

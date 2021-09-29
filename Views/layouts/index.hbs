@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="/socket.io/socket.io.js"></script>
+    <title>Productos</title>
+</head>
+<body>
+  <script>
+    /*IO*/
+    const socket = io();
+    socket.on('mensaje', (data) => {
+    socket.emit('notificacion',`Conectado`);
+    });
+    socket.on('atodos', (data) => {
+    let ul = document.getElementsByTagName('ul')[0];
+    ul.innerHTML = '';
+    for (mensaje of data){
+    let ul = document.getElementsByTagName('ul')[0];
+    let li = document.createElement('li');
+    ul.appendChild(li);
+    li.innerHTML =  `SocketId: ${mensaje.header} - Mensaje: ${mensaje.mensaje} - Producto: ${arr.[0].title}`
+    }
+    });
+
+    socket.on('devuelvo', (data) => {
+    let p = document.getElementsByTagName('p')[0];
+    p.innerHTML = data;
+    })
+
+    function enviar(){ socket.emit('notificacion', document.getElementsByTagName('input')[0].value); };
+    function cambio(valor){ socket.emit('mitexto', valor);
+    }
+    </script>
+    <section>
+  {{{body}}}
+  </section>
+      <button onclick="enviar()">Enviar</button> ingrese: <input oninput="cambio(this.value)" type="text">
+    <p></p>
+    
+    <table style="vertical-align: center;
+    justify-content: center;
+    position: relative;
+    left: 0;
+    top: 0;
+    margin: auto;
+    width: 95%;
+    background: #263238;
+    height: 100%;">
+      <tr>
+      <th style="font-size: 1.4em; color: #fff; font-weight: 900;">Nombre</th>
+      <th style="font-size: 1.4em; color: #fff; font-weight: 900;">Precio</th>
+      <th style="font-size: 1.4em; color: #fff;font-weight: 900;;">Imagen</th>
+      </tr>
+      <br>
+    <tr>
+      <td>
+<ul style="color: #fff"></ul>
+      </td>
+    </tr>   
+    </table>
+  
+</body>
+</html>

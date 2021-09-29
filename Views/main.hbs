@@ -1,0 +1,37 @@
+{{!-- FORM --}}
+<form method="post" action="/api/productos/guardar">
+    <fieldset> 
+        <h1>Ingrese Productos</h1>
+    <div class="formGroup">
+        <label for="titleGuardar">Nombre</label>
+        <input type="text" id="titleGuardar" name="title" required>
+    </div>
+    <div class="formGroup">
+        <label for="price">Precio</label>
+        <input type="number" id="price" name="price" min="0" required>
+    </div>
+    <div class="formGroup">
+        <label for="thumbnail">Imagen URL</label>
+        <input type="url" id="thumbnail" name="thumbnail">
+    </div>
+    <input type="submit" value="CREAR" id="enviar">
+    </fieldset>
+</form>
+
+{{!-- PRODUCTS LIST --}}
+ {{!-- <table classname="table">
+        <tr class="table-titles">
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Imagen</th>
+        </tr>
+{{#if listExist}}
+        {{#each Productos}}
+        <tr class="products-tiles">
+            <td>{{this.title}}</td>
+            <td>${{this.price}}</td>
+            <td><img src="{{this.thumbnail}}" class="product_image"></td>
+        </tr>
+        {{/each}}
+    <table>
+{{/if}} --}}
