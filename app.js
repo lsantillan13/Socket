@@ -12,13 +12,16 @@ const io = require('socket.io')(http);
 const PORT = 8080;
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-const server = http.listen(PORT, () => {console.log('Servidor HTPP escuchando en el puerto', server.address().port);});
-server.on('error', error => console.log('Error en el servidor', error));
+http.listen(8080, () => console.log('Escuchando...'));
+
+// const server = http.listen(8080, () => {console.log('Servidor HTPP escuchando en el puerto', server.address().port);});
+// server.on('error', error => console.log('Error en el servidor', error));
 
 /*Router*/
 const Rutas = require('./Rutas/Routes.js');
 const rutas = new Rutas();
 app.use('/api', router);
+app.use(express.static('Public'));
 
 /* Handlebars */
 app.engine(
@@ -34,13 +37,12 @@ app.set("view engine", "hbs");
 app.set("views", "./Views");
 
 /*WebSocket*/
-
 let mensajes = [];
 
 io.on('connection', (socket) => {
-    const ipAddress = JSON.stringify(socket.request.connection._peername);
-    console.log('alguien se está conectando desde' + ipAddress);
-    socket.emit('mensaje', 'hola, este es un mensaje desde el servidor!');
+    // const ipAddress = JSON.stringify(socket.request.connection._peername);
+    console.log('alguien se está conectando');
+    socket.emit('mensaje', 'HOLA');
     socket.on('notificacion', (data) => {
         console.log(arr);
         mensajes.push({socketId: socket.id, mensaje: data})
