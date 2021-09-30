@@ -48,10 +48,10 @@ io.on('connection', (socket) => {
     console.log('alguien se está conectando');
     socket.emit('mensaje', 'HOLA PUTO');
     socket.on('notificacion', (data) => {        
-        mensajes.push({title: fakeAPI(), mensaje: data})
+        mensajes.push({product: arr,  NoExiste: arr.length === 0 ? true : false})
         io.sockets.emit('atodos', mensajes, arr);
     });
     socket.on('mitexto', (data) => {
         io.sockets.emit('devuelvo', data);
     })
-}); 
+});

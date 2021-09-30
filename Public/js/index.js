@@ -11,20 +11,26 @@
 
     let table = document.getElementById('myTable');
     let tb = document.createElement('tbody');
-         for (product of data){
-        let tr = document.createElement('tr');
-        let tdName = document.createElement('td');
-        let tdPrice = document.createElement('td');
-        let tdPicture = document.createElement('td');
+    let i = 0;
+    const Btn = document.getElementById('enviar');
+    const newArr = [];
+
+    for (product of data){    
+        const tr = document.createElement('tr');
+        const tdName = document.createElement('td');
+        const tdPrice = document.createElement('td');
+        const tdPicture = document.createElement('td');
+        console.log(this.product.product)
+        // tdName.innerHTML =  `${this.product.product[i]["title"]}`;
+        // tdPrice.innerHTML =  `$${this.product.product[i]["price"]}`;
+        // tdPicture.innerHTML =  `${this.product.product[i]["thumbnail"]}`
         tb.appendChild(tr);
         tr.appendChild(tdName);
         tr.appendChild(tdPrice);
         tr.appendChild(tdPicture);
-        table.appendChild(tb);
-        tdName.innerHTML =  `${product.title}`;
-        tdPrice.innerHTML =  `${product.mensaje}`;
-        tdPicture.innerHTML =  `${product.thumbnail}`;
-        };
+        table.appendChild(tb);  }
+        
+
  });
 
  socket.on('devuelvo', (data) => {

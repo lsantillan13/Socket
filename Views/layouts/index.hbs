@@ -19,7 +19,7 @@
   <section class="container">
 
 {{!-- FORM --}}
-<form method="post" action="/api/productos/guardar" class="container formulario" onsubmit="return toSubmit();" target="hiddenFrame">
+<form method="post" action="/api/productos/guardar" class="container formulario"  target="hiddenFrame">
     <h1>Nuevo Productos</h1>
         <div class="formGroup">
             <label for="titleGuardar">Nombre</label>
@@ -47,7 +47,7 @@
             <th>Precio</th>
             <th>Imagen</th>
         </tr>
-{{#if listExist}}
+{{!-- {{#if listExist}}
     {{#each Productos}}
         <tr class="products-titles">
             <td>{{this.title}}</td>
@@ -56,7 +56,7 @@
         </tr>
     {{/each}}
     <table>
-{{/if}}
+{{/if}} --}}
 <ul class="thisUL"></ul>
 <iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
 
