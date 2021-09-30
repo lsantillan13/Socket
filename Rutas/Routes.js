@@ -47,11 +47,5 @@ module.exports = class Rutas {
       const fakeAPI = () => { return arr };
       let msj = {Productos: fakeAPI(), listExist: arr.length != 0 ? true : false}
       res.render('main', msj);
-    }
-}
-
-
-// let Msj = {Productos: fakeAPI(), listExist: arr.length != 0 ? true : false}
-// app.get('/api/productos/vista', function (req, res){
-//     res.render('main', {Productos: fakeAPI(), listExist: arr.length != 0 ? true : false})
-// })
+    };
+};

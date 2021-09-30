@@ -17,13 +17,54 @@
 <body>
   <main class="container-fluid">
   <section class="container">
-    {{{body}}}
+
+{{!-- FORM --}}
+<form method="post" action="/api/productos/guardar" class="container formulario" onsubmit="return toSubmit();" target="hiddenFrame">
+    <h1>Nuevo Productos</h1>
+        <div class="formGroup">
+            <label for="titleGuardar">Nombre</label>
+            <input type="text" id="titleGuardar" name="title" required>
+        </div>
+        <div class="formGroup">
+            <label for="price">Precio</label>
+            <input type="number" id="price" name="price" min="0" required>
+        </div>
+        <div class="formGroup">
+            <label for="thumbnail">Imagen URL</label>
+            <input type="url" id="thumbnail" name="thumbnail">
+        </div>
+        <input type="submit" value="CREAR" id="enviar">
+</form>
+
+{{!-- PRODUCTS LIST --}}
+
+<hr>
+
+<div class="container title"><h2>Productos disponibles</h2></div>
+    <table class="table container" id="myTable">
+        <tr class="table-titles container">
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Imagen</th>
+        </tr>
+{{#if listExist}}
+    {{#each Productos}}
+        <tr class="products-titles">
+            <td>{{this.title}}</td>
+            <td>${{this.price}}</td>
+            <td><img src="{{this.thumbnail}}" class="product_image"></td>
+        </tr>
+    {{/each}}
+    <table>
+{{/if}}
+<ul class="thisUL"></ul>
+<iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
+
+
+
   </section>
   </main>
- 
-<ul>
-  
-</ul>
+
 
 
 

@@ -39,16 +39,19 @@ app.set("views", "./Views");
 /*WebSocket*/
 let mensajes = [];
 
+// const {first, second, third} = require('./Public/js/index');
+
+const fakeAPI = () => { return arr };
+let msj = {Productos: fakeAPI(), listExist: arr.length != 0 ? true : false}
 io.on('connection', (socket) => {
     // const ipAddress = JSON.stringify(socket.request.connection._peername);
     console.log('alguien se está conectando');
-    socket.emit('mensaje', 'HOLA');
-    socket.on('notificacion', (data) => {
-        console.log(arr);
-        mensajes.push({socketId: socket.id, mensaje: data})
+    socket.emit('mensaje', 'HOLA PUTO');
+    socket.on('notificacion', (data) => {        
+        mensajes.push({title: fakeAPI(), mensaje: data})
         io.sockets.emit('atodos', mensajes, arr);
     });
     socket.on('mitexto', (data) => {
         io.sockets.emit('devuelvo', data);
     })
-});
+}); 

@@ -1,6 +1,6 @@
 /*Initial settings*/
 *, *::after, *::before{ margin: 0; padding: 0; box-sizing: border-box;}
-section { width: 100%; height: 100vh; background: #fff; text-align: center; color: #fff; background: #263238;}
+section { width: 100%; height: 100%; background: #fff; text-align: center; color: #fff; background: #263238;}
     form{ background: #263238; height: max-content; display: block;}
         h1, h2{font-size: 1.6em;}
             .title{background: #253238; height: 60px;}
@@ -13,3 +13,4 @@ section { width: 100%; height: 100vh; background: #fff; text-align: center; colo
             td{position: relative; font-size: 1.5em; color: #fff; text-align: center;}
     #enviar{ width: 10%; margin-top: 45px; height: 50px; background:#263238; color: #fff; border: 2.5px solid #fff; position: relative; bottom: 15px;}
 table{vertical-align: center; justify-content: center; position: relative;left: 0; top: 0; margin: auto;width: 95%;background: #263238;}
+li{color: #fff;}
