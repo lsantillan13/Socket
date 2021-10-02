@@ -1,27 +1,30 @@
 module.exports = arr = [];
-
-/*Require*/
+/* Instructions  */
 const express = require('express');
 const router = require('./Router/Router.js');
 const handlebars = require('express-handlebars');
 
-/* Instructions  */
+const path = require('path');
 const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-const PORT = 8080;
+// const axios = require('axios');
+
+
+/*Server up*/
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-http.listen(8080, () => console.log('Escuchando...'));
-
-// const server = http.listen(8080, () => {console.log('Servidor HTPP escuchando en el puerto', server.address().port);});
-// server.on('error', error => console.log('Error en el servidor', error));
+app.set('port', process.env.PORT || 8080);
+http.listen(app.get('port'), () => {
+    console.log('server on port',  app.get('port'));
+});
 
 /*Router*/
 const Rutas = require('./Rutas/Routes.js');
+const { Socket } = require('socket.io');
 const rutas = new Rutas();
 app.use('/api', router);
-app.use(express.static('Public'));
+app.use(express.static(path.join(__dirname, 'Public')));
 
 /* Handlebars */
 app.engine(
@@ -38,20 +41,23 @@ app.set("views", "./Views");
 
 /*WebSocket*/
 let mensajes = [];
-
-// const {first, second, third} = require('./Public/js/index');
-
 const fakeAPI = () => { return arr };
 let msj = {Productos: fakeAPI(), listExist: arr.length != 0 ? true : false}
 io.on('connection', (socket) => {
     // const ipAddress = JSON.stringify(socket.request.connection._peername);
     console.log('alguien se está conectando');
-    socket.emit('mensaje', 'HOLA PUTO');
-    socket.on('notificacion', (data) => {        
-        mensajes.push({product: arr,  NoExiste: arr.length === 0 ? true : false})
-        io.sockets.emit('atodos', mensajes, arr);
-    });
-    socket.on('mitexto', (data) => {
-        io.sockets.emit('devuelvo', data);
+
+    /*Recibo producto*/
+    socket.on('products:send', (data) => {
+        console.log(data)
+        io.sockets.emit('products:send', data)
+    })
+
+    socket.on('message:send', (data) => {
+        io.sockets.emit('message:send', data)
+    })
+
+    socket.on('chat:typing', (data) => {
+        socket.broadcast.emit('chat:typing', data);
     })
 });

@@ -5,21 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{!-- Styles --}}
+    {{!-- CDN & STYLE --}}
+    {{!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> --}}
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link href="/css/style.css" rel="stylesheet">
     {{!-- Scripts --}}
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/index.js"></script>
     <title>Productos</title>
+    <script src="/js/index.js"></script>
 </head>
 
 <body>
+    
   <main class="container-fluid">
   <section class="container">
 
-{{!-- FORM --}}
-<form method="post" action="/api/productos/guardar" class="container formulario"  target="hiddenFrame">
+{{!-- FORM  --}}
+
+<form method="post" action="/api/productos/guardar" class="container formulario" target="hiddenFrame">
     <h1>Nuevo Productos</h1>
         <div class="formGroup">
             <label for="titleGuardar">Nombre</label>
@@ -33,36 +37,36 @@
             <label for="thumbnail">Imagen URL</label>
             <input type="url" id="thumbnail" name="thumbnail">
         </div>
-        <input type="submit" value="CREAR" id="enviar">
+        <button type="submit" id="btn">CREAR</button>
 </form>
 
 {{!-- PRODUCTS LIST --}}
 
 <hr>
-
 <div class="container title"><h2>Productos disponibles</h2></div>
     <table class="table container" id="myTable">
-        <tr class="table-titles container">
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Imagen</th>
-        </tr>
-{{!-- {{#if listExist}}
-    {{#each Productos}}
-        <tr class="products-titles">
-            <td>{{this.title}}</td>
-            <td>${{this.price}}</td>
-            <td><img src="{{this.thumbnail}}" class="product_image"></td>
-        </tr>
-    {{/each}}
-    <table>
-{{/if}} --}}
-<ul class="thisUL"></ul>
+        <thead>
+            <tr class="table-titles container">
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Imagen</th>
+            </tr>
+        </thead>
+    </table>
+      </section>
 <iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
+    <div id="chat-container">
+        <div id="chat-window">
+        <div id="output"></div>
+        <div id="actions"></div>
+        </div>
+        <input type="text" placeholder="Nombre" id="username">
+        <input type="text" placeholder="Mensaje" id="message">
+        <button id="button">Enviar</button>
+    </div>
 
 
 
-  </section>
   </main>
 
 
