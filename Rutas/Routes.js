@@ -1,4 +1,4 @@
-let arr = require('../app.js');
+let arr = require('../server.js');
 let id = 0;
 module.exports = class Rutas {
     constructor(id, productos) {}
