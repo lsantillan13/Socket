@@ -44,6 +44,7 @@ window.onload = function(){
     const message = document.getElementById('message');
     const myBtn = document.getElementById('button');
 
+    /*Primer formulario*/
     myBtn.addEventListener('click', function(){
         socket.emit("message:send", {
             message: message.value,
@@ -51,21 +52,43 @@ window.onload = function(){
         });
     })
 
+    /*User: está escribiendo...*/
     message.addEventListener('keypress', function () {
         socket.emit('chat:typing', username.value);
+        
     });
+    /*FECHA Y HORA*/
+    const timeNow = new Date();
+    function getHour(){
+        const hours = timeNow.getHours().toString().length < 2 ? "0" + timeNow.getHours() : timeNow.getHours();
+        const minutes = timeNow.getMinutes().toString().length < 2 ? "0" + timeNow.getMinutes() : timeNow.getMinutes();
+        const secs =  timeNow.getSeconds().toString().length < 2 ? "0" + timeNow.getSeconds() :  timeNow.getSeconds();
 
+        let mainTime = `${hours}:${minutes}:${secs}`;
+        return mainTime;
+    };
+
+    function getDate(){
+        const month = timeNow.getMonth();
+        const days = timeNow.getDate();
+        const year = timeNow.getFullYear();
+        const mainDate = `${days}/${month}/${year}`;
+    }
+
+    /* Mensaje */
+    let fechaActual  = new Date();
+    const dateMsg = ` ${fechaActual.getDate()}/${fechaActual.getMonth()}/${fechaActual.getFullYear()}`;
+    
     socket.on('message:send', function (data){
         actions.innerHTML = ``;
-        output.innerHTML += `<p> ${data.username} - ${data.message} </p>`
+        output.innerHTML += `<p> <strong>${data.username}</strong> <i class="notItalic">[${dateMsg} ${getHour()}]</i> : <i>${data.message}</i> </p>`;
     });
 
+    /*User: está escribiendo...*/
     socket.on('chat:typing', (data) => {
         actions.innerHTML = `<p> <em>${data} está escribiendo...</em> </p>`
-    })
+    });
     
-
-
 };
 /*  axios.post('/api/productos/guardar', {objects})
     .then(function (data) { console.log(data);})

@@ -17,6 +17,11 @@ li{color: #fff;}
 
 /*ESTILOS PARA MI CHAT*/
 
+/*MENSAJES*/
+ .notItalic{font-style: normal; color: brown;}
+p strong { color: blue;}
+p i{color: green;}
+
 body{
     font-family: sans-serif;
 }

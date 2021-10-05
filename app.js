@@ -3,6 +3,7 @@ module.exports = arr = [];
 const express = require('express');
 const router = require('./Router/Router.js');
 const handlebars = require('express-handlebars');
+const fs = require('fs');
 
 const path = require('path');
 const app = express();
@@ -22,6 +23,7 @@ http.listen(app.get('port'), () => {
 /*Router*/
 const Rutas = require('./Rutas/Routes.js');
 const { Socket } = require('socket.io');
+const { fstat } = require('fs');
 const rutas = new Rutas();
 app.use('/api', router);
 app.use(express.static(path.join(__dirname, 'Public')));
@@ -51,13 +53,20 @@ io.on('connection', (socket) => {
     socket.on('products:send', (data) => {
         console.log(data)
         io.sockets.emit('products:send', data)
-    })
+    });
 
+    /*Envio de mensaje al cliente*/
     socket.on('message:send', (data) => {
         io.sockets.emit('message:send', data)
-    })
+        /*guardado de mensajes*/
+        fs.appendFile('Data/data.txt', `${JSON.stringify(data)}`, function (err) {
+            if (err) throw err;
+            console.log('New messages were appended to file');
+          });
+    });
 
+    /*El cliente esta escribiendo*/
     socket.on('chat:typing', (data) => {
         socket.broadcast.emit('chat:typing', data);
-    })
+    });
 });
