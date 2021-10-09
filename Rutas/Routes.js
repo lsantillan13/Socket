@@ -1,5 +1,9 @@
-let arr = require('../server.ts');
+/*Typescript*/
+// let arr = require('../server.ts');
+
+/*Js*/
 let arr = require('../server.js');
+
 let id = 0;
 module.exports = class Rutas {
     constructor(id, productos) {}
