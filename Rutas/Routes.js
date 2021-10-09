@@ -1,3 +1,4 @@
+let arr = require('../server.ts');
 let arr = require('../server.js');
 let id = 0;
 module.exports = class Rutas {
